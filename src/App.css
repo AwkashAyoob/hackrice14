@@ -1,0 +1,229 @@
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #ffffff 0%, #b0c4de 100%); /* Light blue gradient */
+  color: #2c3e50; /* Dark blue text for contrast */
+  height: 100vh; /* Ensure body takes up full height */
+  overflow-x: hidden;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Full-Screen App Container */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh; /* Full-screen height */
+  width: 100vw; /* Full width to occupy entire screen */
+  padding: 30px 20px; /* Add padding */
+  background: rgba(255, 255, 255, 0.8); /* Light background */
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative;
+  box-sizing: border-box; /* Ensure padding does not affect size */
+}
+
+/* Calendar Cells - Remove unintended highlights */
+td, th {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+td:hover, th:hover {
+  background-color: initial;
+}
+
+/* Elegant wavy background */
+.App::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #2980b9, #3498db); /* Blue gradient */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  z-index: -1;
+}
+
+/* Header */
+.App-header {
+  background-color: transparent;
+  color: #2c3e50; /* Dark blue */
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.App-header h1 {
+  font-size: 4rem;
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #2980b9, #3498db); /* Gradient of blues */
+  background-size: 200% 200%; /* Ensure background covers the text */
+  background-position: 0% 50%; /* Starting position for the gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Required for gradient to show in text */
+  animation: gradientText 3s ease infinite; /* Gradient animation */
+}
+
+.App-header p {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+/* Links */
+.App-link {
+  color: #3498db; /* Blue link color */
+  text-decoration: none;
+  font-size: 1.2rem;
+  position: relative;
+  font-weight: bold;
+}
+
+.App-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #2980b9; /* Darker blue */
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.App-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Assignments List */
+ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Wider cards */
+  gap: 30px; /* Larger gap for breathing space */
+}
+
+li {
+  background: rgba(255, 255, 255, 0.9); /* Light background for cards */
+  border: none;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  text-align: left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+
+li:hover {
+  transform: translateY(-12px); /* More prominent hover animation */
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+/* Form elements with white text */
+input, select, button {
+  margin: 15px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid #2980b9; /* Blue border */
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9); /* Light background */
+  color: #2c3e50; /* Dark blue text */
+}
+
+input::placeholder, select::placeholder {
+  color: #2c3e50; /* Dark blue placeholder text */
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 12px rgba(52, 152, 219, 0.4);
+  color: #2c3e50; /* Dark blue text on focus */
+}
+
+button {
+  background-color: #2980b9; /* Blue button */
+  color: #fff; /* White text */
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(52, 152, 219, 0.5);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #21618c;
+  transform: translateY(-3px);
+}
+
+/* Make logos white (assuming SVG or images) */
+form img, form svg {
+  filter: brightness(0) invert(1); /* Make logos white */
+}
+
+/* Footer */
+footer {
+  background-color: #ffffff; /* White footer */
+  color: #2c3e50; /* Dark blue text */
+  padding: 25px;
+  font-size: 1rem;
+  text-align: center;
+  width: 100%;
+  border-radius: 0 0 24px 24px;
+}
+
+/* Gradient Text Animation */
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Responsive design */
+@media only screen and (max-width: 600px) {
+  .App-header h1 {
+    font-size: 2.5rem;
+  }
+
+  ul {
+    grid-template-columns: 1fr; /* Stacked cards on mobile */
+  }
+
+  li {
+    font-size: 1rem;
+  }
+
+  input, select, button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
